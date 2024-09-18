@@ -3,34 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Light Up Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>My Games</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: block;
+            width: 200px;
+            padding: 15px;
+            margin: 15px auto;
+            background-color: #ff7f50;
+            color: white;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ff6347;
+        }
+
+        .button:active {
+            background-color: #ff4500;
+        }
+    </style>
 </head>
 <body>
-    <div id="game-container">
-        <div id="grid">
-            <!-- Create a 3x3 grid of buttons -->
-            <button class="grid-btn" id="btn-0"></button>
-            <button class="grid-btn" id="btn-1"></button>
-            <button class="grid-btn" id="btn-2"></button>
-            <button class="grid-btn" id="btn-3"></button>
-            <button class="grid-btn" id="btn-4"></button>
-            <button class="grid-btn" id="btn-5"></button>
-            <button class="grid-btn" id="btn-6"></button>
-            <button class="grid-btn" id="btn-7"></button>
-            <button class="grid-btn" id="btn-8"></button>
-        </div>
-        <button id="start-btn">Start</button>
-        <p id="message"></p>
-        <p id="score">Score: 0</p>
-        <p id="high-score">High Score: 0</p>
-
-        <!-- Audio elements for sound effects -->
-        <audio id="light-up-sound" src="light-up.mp3"></audio>
-        <audio id="press-sound" src="press.mp3"></audio>
-        <audio id="game-over-sound" src="game-over.mp3"></audio>
+    <div class="container">
+        <h1>My Games</h1>
+        <a href="Bingo.html" class="button">Bingo</a>
+        <a href="Impossible_game.html" class="button">Impossible Game</a>
+        <a href="Memory_game.html" class="button">Memory Game</a>
+        <a href="money_tracker.html" class="button">Money Tracker</a>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
