@@ -1,0 +1,50 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#game-container {
+    text-align: center;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px; /* Reduce gap between buttons */
+    margin-bottom: 20px;
+}
+
+.grid-btn {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.grid-btn.active {
+    background-color: yellow;
+}
+
+.grid-btn.pressed {
+    background-color: lightgrey; /* Color when pressed */
+}
+
+#start-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+p {
+    font-size: 18px;
+    margin: 10px 0;
+}

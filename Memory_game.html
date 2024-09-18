@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Up Game</title>
+    <link rel="stylesheet" href="Memory_game.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="grid">
+            <!-- Create a 3x3 grid of buttons -->
+            <button class="grid-btn" id="btn-0"></button>
+            <button class="grid-btn" id="btn-1"></button>
+            <button class="grid-btn" id="btn-2"></button>
+            <button class="grid-btn" id="btn-3"></button>
+            <button class="grid-btn" id="btn-4"></button>
+            <button class="grid-btn" id="btn-5"></button>
+            <button class="grid-btn" id="btn-6"></button>
+            <button class="grid-btn" id="btn-7"></button>
+            <button class="grid-btn" id="btn-8"></button>
+        </div>
+        <button id="start-btn">Start</button>
+        <p id="message"></p>
+        <p id="score">Score: 0</p>
+        <p id="high-score">High Score: 0</p>
+
+        <!-- Audio elements for sound effects -->
+        <audio id="light-up-sound" src="light-up.mp3"></audio>
+        <audio id="press-sound" src="press.mp3"></audio>
+        <audio id="game-over-sound" src="game-over.mp3"></audio>
+    </div>
+
+    <script src="Memory_game.js"></script>
+</body>
+</html>

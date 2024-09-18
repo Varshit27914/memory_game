@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Tracker</title>
+    <link rel="stylesheet" href="money_tracker.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Money Tracker</h1>
+            <div id="amount">Rs 0.00</div>
+        </header>
+        <main>
+            <div id="amount1">Rs 0.00</div>
+            <div id="history-section" class="hidden">
+                <h2>History</h2>
+                <ul id="history-list"></ul>
+            </div>
+        </main>
+        <div class="action-buttons">
+            <button id="subtract">-</button>
+            <button id="add">+</button>
+        </div>
+        <footer>
+            <button id="lent-borrow">Lent/Borrow</button>
+            <button id="home">Home</button>
+            <button id="history">History</button>
+        </footer>
+    </div>
+
+    <div id="popup-add" class="popup">
+        <div class="popup-content">
+            <label for="amountInputAdd">Amount in Rs:</label>
+            <input type="number" id="amountInputAdd" placeholder="0.00">
+            
+            <label for="categoryAdd">Category:</label>
+            <select id="categoryAdd">
+                <option value="other">Other</option>
+                <option value="pocket_money">Pocket Money</option>
+                <option value="salary">Salary</option>
+                <option value="loan">Loan</option>
+                <option value="borrow">Borrow</option>
+            </select>
+            
+            <label for="descriptionAdd">Description:</label>
+            <input type="text" id="descriptionAdd" placeholder="Optional">
+
+            <button id="submitAmountAdd">+</button>
+        </div>
+    </div>
+
+    <div id="popup-subtract" class="popup">
+        <div class="popup-content">
+            <label for="amountInputSubtract">Amount in Rs:</label>
+            <input type="number" id="amountInputSubtract" placeholder="0.00">
+            
+            <label for="categorySubtract">Category:</label>
+            <select id="categorySubtract">
+                <option value="other">Other</option>
+                <option value="groceries">Groceries</option>
+                <option value="snacks">Snacks</option>
+                <option value="travel">Travel</option>
+                <option value="petrol">Petrol</option>
+                <option value="lent">Lent</option>
+            </select>
+            
+            <label for="descriptionSubtract">Description:</label>
+            <input type="text" id="descriptionSubtract" placeholder="Optional">
+
+            <button id="submitAmountSubtract">-</button>
+        </div>
+    </div>
+
+    <script src="money_tracker.js"></script>
+</body>
+</html>
