@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ParkzIN - Header + Team Section</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+      
+      
+        <link rel="stylesheet" href="assets/css/style.css" />
+
+  <style>
+    :root {
+      --background: #000000;
+      --text-primary: #black;
+      --accent: #2ECC71;
+      --nav-bg: rgba(0, 0, 0, 0.8);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .user-message, .bot-message {
+  max-width: 80%;
+  padding: 8px 12px;
+  margin: 6px 0;
+  border-radius: 16px;
+  line-height: 1.4;
+  display: inline-block;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: #2ECC71;
+  color: white;
+  align-self: flex-end;
+  margin-left: auto;
+  text-align: right;
+}
+
+.bot-message {
+  background-color: #333;
+  color: white;
+  align-self: flex-start;
+  margin-right: auto;
+  text-align: left;
+}
+
+#chat-messages {
+  display: flex;
+  flex-direction: column;
+}
+
+
+    body {
+      background-color: var(--background);
+      color: var(--text-primary);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      background-color: #3631319d;
+      align-items: center;
+      height: 45px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      list-style-type: none;
+      align-items: center;
+    }
+
+    .navbar .nav-links li {
+      margin: 0 15px;
+    }
+
+    .navbar .nav-links li a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 15px;
+      transition: color 0.3s ease, font-size 0.15s ease;
+    }
+
+    .navbar .nav-links li a:hover {
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    .navbar .nav-links img {
+      height: 30px;
+      margin-right: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <img src="../images/landing-images/LOGO-modified.png" alt="Logo">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Book now</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Support</a></li>
+        <a href="../loginm/login.html"><img src="../images/landing-images/profile-user.png" alt="Profile"></a>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!--  BREADCRUMB AREA -->
+      <br><br><br>
+    
+    <!--  TEAM MEMBERS -->
+    <section class="faq-section" style="background-color: #111; padding: 60px 0;">
+        <div class="container">
+          <div class="section-title text-center" data-aos="fade-up">
+            <h2 style="color: #2ECC71;">Frequently Asked Questions</h2>
+          </div>
+          <div class="accordion" id="faqAccordion" data-aos="fade-up" style="margin-top: 30px;">
+            
+            <div class="card bg-dark text-light">
+              <div class="card-header" id="faq1">
+                <h5 class="mb-0">
+                  <button class="btn btn-link text-light" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                    What is ParkzIN?
+                  </button>
+                </h5>
+              </div>
+              <div id="collapse1" class="collapse show" aria-labelledby="faq1" data-parent="#faqAccordion">
+                <div class="card-body">
+                  ParkzIN is a smart mobile app focused on solving urban transportation and parking challenges. It provides features like smart parking, real-time availability, and multiple commuting services.
+                </div>
+              </div>
+            </div>
+      
+            <div class="card bg-dark text-light">
+              <div class="card-header" id="faq2">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed text-light" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                    How does the parking reservation work?
+                  </button>
+                </h5>
+              </div>
+              <div id="collapse2" class="collapse" aria-labelledby="faq2" data-parent="#faqAccordion">
+                <div class="card-body">
+                  Users can check real-time parking availability and book parking slots in advance to save time and reduce the stress of city parking.
+                </div>
+              </div>
+            </div>
+      
+            <div class="card bg-dark text-light">
+              <div class="card-header" id="faq3">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed text-light" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                    What transportation options does ParkzIN offer?
+                  </button>
+                </h5>
+              </div>
+              <div id="collapse3" class="collapse" aria-labelledby="faq3" data-parent="#faqAccordion">
+                <div class="card-body">
+                  ParkzIN supports rental cars, bikes, bicycles, carpooling, and driver services for long or short trips to meet diverse commuting needs.
+                </div>
+              </div>
+            </div>
+      
+            <div class="card bg-dark text-light">
+              <div class="card-header" id="faq4">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed text-light" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                    Is ParkzIN eco-friendly?
+                  </button>
+                </h5>
+              </div>
+              <div id="collapse4" class="collapse" aria-labelledby="faq4" data-parent="#faqAccordion">
+                <div class="card-body">
+                  Yes! ParkzIN promotes sustainability through solar-powered EV charging stations and encourages green transportation options.
+                </div>
+              </div>
+            </div>
+      
+            <div class="card bg-dark text-light">
+              <div class="card-header" id="faq5">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed text-light" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                    Does ParkzIN support used car transactions?
+                  </button>
+                </h5>
+              </div>
+              <div id="collapse5" class="collapse" aria-labelledby="faq5" data-parent="#faqAccordion">
+                <div class="card-body">
+                  Yes, ParkzIN simplifies used car buying and selling by offering transaction tools within the app to connect buyers and sellers easily.
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      <!-- AI Bot Chat Widget -->
+<div id="chatbot-toggle" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999;">
+    <button onclick="toggleChat()" style="background-color: #2ECC71; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 24px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">💬</button>
+  </div>
+  
+  <div id="chatbox" style="display: none; position: fixed; bottom: 100px; right: 30px; width: 300px; height: 400px; background-color: #1c1c1c; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.4); z-index: 9999; overflow: hidden;">
+    <div style="background-color: #2ECC71; color: white; padding: 10px; font-weight: bold;">ParkzIN AI Bot</div>
+    <div id="chat-messages" style="padding: 10px; height: 300px; overflow-y: auto; color: white; font-size: 14px;"></div>
+    <div style="padding: 10px; background-color: #111;">
+      <input type="text" id="user-input" placeholder="Ask a question..." style="width: 77%; padding: 6px; border-radius: 6px; border: none;">
+      <button onclick="sendMessage()" style="background-color: #2ECC71; color: white; border: none; padding: 6px 10px; border-radius: 6px;">Send</button>
+    </div>
+  </div>
+  
+  <script>
+    function toggleChat() {
+      var box = document.getElementById("chatbox");
+      box.style.display = box.style.display === "none" ? "block" : "none";
+    }
+  
+    function sendMessage() {
+  const input = document.getElementById("user-input");
+  const message = input.value.trim();
+  if (message === "") return;
+
+  const chat = document.getElementById("chat-messages");
+  chat.innerHTML += `<div class="user-message">${message}</div>`;
+  chat.scrollTop = chat.scrollHeight;
+
+  fetch('https://olwik-twitch.onrender.com/ask', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    message: "You are an assistance bot to answer as support to people who are using the ParkzIN app. About ParkzIN: ParkzIN is a smart mobile application designed to improve urban mobility by addressing two major challenges in cities: parking and transportation. It provides an end-to-end solution that includes smart parking management, real-time availability, early reservations, and booking management features. These help reduce the time, effort, and stress of finding parking in crowded urban areas. In addition to parking, ParkzIN offers a variety of transportation services such as rental cars, bikes, bicycles, carpooling options, and even driver services for long-distance travel or valet needs. It aims to make commuting easier, more reliable, and flexible. Sustainability is a core value of ParkzIN. The app supports eco-friendly transportation by integrating solar-powered EV charging stations at parking facilities. It also helps facilitate used vehicle transactions, making the buying and selling of cars simpler for users. Overall, ParkzIN is built to reduce traffic congestion, encourage green alternatives, and bring smart, user-friendly solutions to modern city transportation through technology and thoughtful design. now give answer to the user's prompt: " + message
+  })
+})
+.then(res => res.json())
+.then(data => {
+  const chat = document.getElementById("chat-messages");
+  const lines = data.response.split('\n'); // Split by newline
+
+  lines.forEach(line => {
+    if (line.trim() !== "") {
+      chat.innerHTML += `<div class="bot-message">${line.trim()}</div>`;
+    }
+  });
+
+  chat.scrollTop = chat.scrollHeight;
+})
+.catch(err => {
+  console.error("Fetch error:", err);
+  chat.innerHTML += `<div class="bot-message">Oops! Something went wrong. 😔</div>`;
+});
+
+  input.value = "";
+}
+
+
+
+
+
+
+
+  
+    function getBotReply(msg) {
+      msg = msg.toLowerCase();
+      if (msg.includes("what is parkzin")) return "ParkzIN is a smart mobility app for solving urban parking and transport problems.";
+      if (msg.includes("parking")) return "We offer smart parking solutions with real-time availability.";
+      if (msg.includes("car") || msg.includes("vehicle")) return "Yes, we support rental cars, bikes, bicycles, and even used car transactions.";
+      if (msg.includes("eco") || msg.includes("green")) return "ParkzIN supports eco-friendly mobility with solar EV charging stations.";
+      if (msg.includes("services")) return "Our services include rentals, carpools, driver assistance, and parking bookings.";
+      return "I'm still learning! Try asking about parking, services, or eco-friendly options.";
+    }
+  </script>
+  
+    
+    
+    
+</main>
+
+  <!-- SCRIPTS -->  
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+</html>
