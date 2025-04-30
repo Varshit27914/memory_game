@@ -25,23 +25,21 @@
   <canvas id="pdf-canvas"></canvas>
 
   <!-- Load PDF.js -->
-  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
   <script>
-    // Update this URL to point to your GitHub Pages hosted PDF
-    var url = 'https://github.com/Varshit27914/memory_game/blob/main/novel/Vol-12.pdf';
+    // Use the raw URL of the PDF file
+    var url = 'https://raw.githubusercontent.com/Varshit27914/memory_game/main/novel/Vol-12.pdf';
 
-    // Load PDF.js library
     var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
-    // Set the workerSrc property
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
 
-    // Asynchronously load the PDF
     pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
-      pdfDoc = pdfDoc_;
-
-      // Load the first page
+      console.log("PDF loaded successfully");
+      var pdfDoc = pdfDoc_;
       pdfDoc.getPage(1).then(function(page) {
+        console.log("Page 1 loaded");
+
         var canvas = document.getElementById('pdf-canvas');
         var context = canvas.getContext('2d');
 
@@ -55,7 +53,9 @@
           viewport: viewport
         };
 
-        page.render(renderContext);
+        page.render(renderContext).then(function() {
+          console.log('Page rendered successfully');
+        });
       });
     }).catch(function(error) {
       console.error('Error loading PDF: ' + error);
