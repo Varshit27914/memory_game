@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Read Vol-12.pdf from GitHub</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: sans-serif;
+      background: #f4f4f4;
+    }
+    #pdf-canvas {
+      border: 1px solid #ccc;
+      display: block;
+      margin: 20px auto;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📖 Reading Vol-12.pdf from GitHub</h2>
+  <canvas id="pdf-canvas"></canvas>
+
+  <!-- Load PDF.js -->
+  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  <script>
+    // Raw PDF URL from your repo permalink
+    var url = 'https://raw.githubusercontent.com/Varshit27914/memory_game/51cd0673de21b2cae77c3aba5725bc9af2d53c1e/novel/Vol-12.pdf';
+
+    // Load PDF.js library
+    var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+    // Set the workerSrc property
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+
+    // Asynchronously load the PDF
+    pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+      pdfDoc = pdfDoc_;
+
+      // Load the first page
+      pdfDoc.getPage(1).then(function(page) {
+        var canvas = document.getElementById('pdf-canvas');
+        var context = canvas.getContext('2d');
+
+        var viewport = page.getViewport({ scale: 1.5 });
+
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        var renderContext = {
+          canvasContext: context,
+          viewport: viewport
+        };
+
+        page.render(renderContext);
+      });
+    }).catch(function(error) {
+      console.error('Error loading PDF: ' + error);
+    });
+  </script>
+
+</body>
+</html>
