@@ -3,64 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Read Vol-12.pdf from GitHub</title>
+  <title>Full PDF Reader 📖</title>
   <style>
     body {
       margin: 0;
-      padding: 20px;
       font-family: sans-serif;
       background: #f4f4f4;
+      overflow-x: hidden;
     }
-    #pdf-canvas {
-      border: 1px solid #ccc;
-      display: block;
-      margin: 20px auto;
+    #toolbar {
+      background: #222;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    #toolbar button {
+      padding: 5px 10px;
+      background: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    #pdf-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+    canvas {
+      margin: 10px 0;
       box-shadow: 0 0 8px rgba(0,0,0,0.2);
     }
   </style>
 </head>
 <body>
 
-  <h2>📖 Reading Vol-12.pdf from GitHub</h2>
-  <canvas id="pdf-canvas"></canvas>
+<div id="toolbar">
+  <span id="page-info">Page 0 / 0</span>
+  <button onclick="zoomIn()">➕ Zoom In</button>
+  <button onclick="zoomOut()">➖ Zoom Out</button>
+  <button onclick="resetZoom()">🔄 Reset Zoom</button>
+</div>
 
-  <!-- Load PDF.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-  <script>
-    // Use a CORS proxy to load the PDF
-    var url = 'https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/Varshit27914/memory_game/main/novel/Vol-12.pdf';
+<div id="pdf-container"></div>
 
-    var pdfjsLib = window['pdfjs-dist/build/pdf'];
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<script>
+  const url = 'https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/Varshit27914/memory_game/main/novel/Vol-12.pdf';
+  const pdfjsLib = window['pdfjs-dist/build/pdf'];
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+  let pdfDoc = null;
+  let scale = 1.5;
+  let totalPages = 0;
 
-    pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
-      console.log("PDF loaded successfully");
-      var pdfDoc = pdfDoc_;
-      pdfDoc.getPage(1).then(function(page) {
-        console.log("Page 1 loaded");
+  // Get bookmark if exists
+  let lastPage = localStorage.getItem('bookmark') || 1;
 
-        var canvas = document.getElementById('pdf-canvas');
-        var context = canvas.getContext('2d');
+  pdfjsLib.getDocument(url).promise.then(function(pdf) {
+    pdfDoc = pdf;
+    totalPages = pdf.numPages;
+    document.getElementById('page-info').innerText = `Page ${lastPage} / ${totalPages}`;
+    renderAllPages();
+  });
 
-        var viewport = page.getViewport({ scale: 1.5 });
-
+  function renderAllPages() {
+    for (let num = 1; num <= pdfDoc.numPages; num++) {
+      pdfDoc.getPage(num).then(function(page) {
+        const viewport = page.getViewport({ scale: scale });
+        const canvas = document.createElement('canvas');
+        canvas.classList.add('pdf-page');
+        canvas.dataset.pageNumber = num;
+        const context = canvas.getContext('2d');
         canvas.height = viewport.height;
         canvas.width = viewport.width;
 
-        var renderContext = {
+        document.getElementById('pdf-container').appendChild(canvas);
+
+        const renderContext = {
           canvasContext: context,
           viewport: viewport
         };
 
-        page.render(renderContext).then(function() {
-          console.log('Page rendered successfully');
-        });
+        page.render(renderContext);
       });
-    }).catch(function(error) {
-      console.error('Error loading PDF: ' + error);
+    }
+  }
+
+  function zoomIn() {
+    scale += 0.2;
+    reloadPages();
+  }
+
+  function zoomOut() {
+    scale = Math.max(0.4, scale - 0.2);
+    reloadPages();
+  }
+
+  function resetZoom() {
+    scale = 1.5;
+    reloadPages();
+  }
+
+  function reloadPages() {
+    document.getElementById('pdf-container').innerHTML = '';
+    renderAllPages();
+  }
+
+  // Scroll detection to update current page info and save bookmark
+  window.addEventListener('scroll', () => {
+    const canvases = document.querySelectorAll('.pdf-page');
+    let currentPage = 1;
+    canvases.forEach(canvas => {
+      const rect = canvas.getBoundingClientRect();
+      if (rect.top < window.innerHeight / 2) {
+        currentPage = canvas.dataset.pageNumber;
+      }
     });
-  </script>
+    document.getElementById('page-info').innerText = `Page ${currentPage} / ${totalPages}`;
+    localStorage.setItem('bookmark', currentPage);
+  });
+
+  // Scroll to bookmarked page on load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const targetCanvas = document.querySelector(`[data-page-number="${lastPage}"]`);
+      if (targetCanvas) {
+        targetCanvas.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 1500);
+  });
+</script>
 
 </body>
 </html>
