@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>📚 My Novel Library</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: sans-serif;
+      background: #f0f0f0;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .novel-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .novel-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+    }
+    .novel-card h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .novel-card button {
+      padding: 8px 15px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .novel-card button:hover {
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+
+<h1>📚 My Novel Library</h1>
+
+<div class="novel-list">
+  <!-- Novel cards -->
+  <div class="novel-card">
+    <h2>Vol-12</h2>
+    <button onclick="openNovel('Vol-12.pdf')">📖 Read Now</button>
+  </div>
+
+  <div class="novel-card">
+    <h2>Vol-13</h2>
+    <button onclick="openNovel('Vol-13.pdf')">📖 Read Now</button>
+  </div>
+
+  <div class="novel-card">
+    <h2>Vol-14</h2>
+    <button onclick="openNovel('Vol-14.pdf')">📖 Read Now</button>
+  </div>
+
+  <!-- Add more cards manually or automate this later -->
+</div>
+
+<script>
+  function openNovel(fileName) {
+    window.location.href = `novel.html?file=${fileName}`;
+  }
+</script>
+
+</body>
+</html>
